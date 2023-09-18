@@ -4,60 +4,41 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-import * as React from 'react';
-import {
-	AutocompleteProps,
-	GridProps,
-	TextFieldProps,
-} from '@aws-amplify/ui-react';
-import { EscapeHatchProps } from '@aws-amplify/ui-react/internal';
-import { Category, Product } from '../src/API.js';
+import * as React from "react";
+import { AutocompleteProps, GridProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { Category, Product } from "../../src/API.ts";
 export declare type ValidationResponse = {
-	hasError: boolean;
-	errorMessage?: string;
+    hasError: boolean;
+    errorMessage?: string;
 };
-export declare type ValidationFunction<T> = (
-	value: T,
-	validationResponse: ValidationResponse,
-) => ValidationResponse | Promise<ValidationResponse>;
+export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type CategoryUpdateFormInputValues = {
-	name?: string;
-	value?: string;
-	Products?: Product[];
+    name?: string;
+    value?: string;
+    Products?: Product[];
 };
 export declare type CategoryUpdateFormValidationValues = {
-	name?: ValidationFunction<string>;
-	value?: ValidationFunction<string>;
-	Products?: ValidationFunction<Product>;
+    name?: ValidationFunction<string>;
+    value?: ValidationFunction<string>;
+    Products?: ValidationFunction<Product>;
 };
-export declare type PrimitiveOverrideProps<T> = Partial<T> &
-	React.DOMAttributes<HTMLDivElement>;
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type CategoryUpdateFormOverridesProps = {
-	CategoryUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
-	name?: PrimitiveOverrideProps<TextFieldProps>;
-	value?: PrimitiveOverrideProps<TextFieldProps>;
-	Products?: PrimitiveOverrideProps<AutocompleteProps>;
+    CategoryUpdateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    value?: PrimitiveOverrideProps<TextFieldProps>;
+    Products?: PrimitiveOverrideProps<AutocompleteProps>;
 } & EscapeHatchProps;
-export declare type CategoryUpdateFormProps = React.PropsWithChildren<
-	{
-		overrides?: CategoryUpdateFormOverridesProps | undefined | null;
-	} & {
-		id?: string;
-		category?: Category;
-		onSubmit?: (
-			fields: CategoryUpdateFormInputValues,
-		) => CategoryUpdateFormInputValues;
-		onSuccess?: (fields: CategoryUpdateFormInputValues) => void;
-		onError?: (
-			fields: CategoryUpdateFormInputValues,
-			errorMessage: string,
-		) => void;
-		onChange?: (
-			fields: CategoryUpdateFormInputValues,
-		) => CategoryUpdateFormInputValues;
-		onValidate?: CategoryUpdateFormValidationValues;
-	} & React.CSSProperties
->;
-export default function CategoryUpdateForm(
-	props: CategoryUpdateFormProps,
-): React.ReactElement;
+export declare type CategoryUpdateFormProps = React.PropsWithChildren<{
+    overrides?: CategoryUpdateFormOverridesProps | undefined | null;
+} & {
+    id?: string;
+    category?: Category;
+    onSubmit?: (fields: CategoryUpdateFormInputValues) => CategoryUpdateFormInputValues;
+    onSuccess?: (fields: CategoryUpdateFormInputValues) => void;
+    onError?: (fields: CategoryUpdateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: CategoryUpdateFormInputValues) => CategoryUpdateFormInputValues;
+    onValidate?: CategoryUpdateFormValidationValues;
+} & React.CSSProperties>;
+export default function CategoryUpdateForm(props: CategoryUpdateFormProps): React.ReactElement;

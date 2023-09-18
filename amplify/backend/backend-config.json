@@ -33,14 +33,14 @@
         ],
         "passwordProtectionSettings": {
           "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
+            "REQUIRES_LOWERCASE"
           ],
-          "passwordPolicyMinLength": 8
+          "passwordPolicyMinLength": 7
         },
-        "signupAttributes": [],
+        "signupAttributes": [
+          "EMAIL",
+          "NAME"
+        ],
         "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
