@@ -1,0 +1,23 @@
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  value: String
+  Products: [Product] @hasMany(indexName: "byCategory", fields: ["id"])
+}
+
+type Genre @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  value: String
+  Products: [Product] @hasMany(indexName: "byGenre", fields: ["id"])
+}
+
+type Product @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  isSold: Boolean
+  price: Float
+  image: String
+  categoryID: ID! @index(name: "byCategory")
+  genreID: ID! @index(name: "byGenre")
+}
