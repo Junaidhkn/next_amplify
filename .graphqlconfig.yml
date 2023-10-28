@@ -1,0 +1,15 @@
+projects:
+  dashboardproducts:
+    schemaPath: amplify/backend/api/dashboardproducts/build/schema.graphql
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: src/graphql
+        region: ap-south-1
+        apiId: null
+        maxDepth: 3

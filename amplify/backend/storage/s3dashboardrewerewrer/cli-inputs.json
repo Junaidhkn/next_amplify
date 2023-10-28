@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3dashboardrewerewrer",
+  "bucketName": "dashboardrewerewrer",
+  "policyUUID": "80e72edd",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}
