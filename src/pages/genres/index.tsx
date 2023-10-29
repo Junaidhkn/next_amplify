@@ -1,7 +1,34 @@
-import { Heading } from '@aws-amplify/ui-react';
+import { useEffect, useState } from 'react';
+import { API } from 'aws-amplify';
+import { GraphQLQuery } from '@aws-amplify/api';
+import * as queries from '@/graphql/queries';
+import ProductDetails from '@/components/ProductDetails';
+import { ListGenresQuery } from '@/API';
+import { TableValues } from '@/types/types';
 
-const Genres = () => {
-	return <Heading level={1}>Hello world from Genres!</Heading>;
-};
+export default function Genres() {
+	const [genres, setGenres] = useState<TableValues[]>();
 
-export default Genres;
+	useEffect(() => {
+		async function grabGenres() {
+			const allGenres = await API.graphql<GraphQLQuery<ListGenresQuery>>({
+				query: queries.listGenres,
+			});
+			setGenres(allGenres.data?.listGenres?.items as TableValues[]);
+		}
+		grabGenres();
+	}, []);
+
+	return (
+		<>
+			{genres === undefined ? (
+				'No Genres available'
+			) : (
+				<ProductDetails
+					headingName='Genres'
+					items={genres}
+				/>
+			)}
+		</>
+	);
+}

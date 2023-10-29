@@ -42,6 +42,7 @@ export default function Layout({
 					{routes.map((route) => (
 						<Link
 							key={route.href}
+							className='list-none text-blue-500 hover:text-blue-800'
 							href={route.href}>
 							{route.label}
 						</Link>
