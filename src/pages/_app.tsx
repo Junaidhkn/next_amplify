@@ -5,11 +5,16 @@ import { Amplify } from 'aws-amplify';
 import awsExports from '@/aws-exports';
 import '@aws-amplify/ui-react/styles.css';
 import { withAuthenticator } from '@aws-amplify/ui-react';
+import Layout from '@/components/Layout';
 
 Amplify.configure({ ...awsExports, ssr: true });
 
 function App({ Component, pageProps }: AppProps) {
-	return <Component {...pageProps} />;
+	return (
+		<Layout>
+			<Component {...pageProps} />
+		</Layout>
+	);
 }
 
 export default withAuthenticator(App);

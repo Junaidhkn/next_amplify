@@ -50,7 +50,7 @@ export default function Layout({
 				<Button
 					variation='primary'
 					borderRadius='100%'>
-					A
+					Jk
 				</Button>
 			</Flex>
 			<Divider size='small'></Divider>
