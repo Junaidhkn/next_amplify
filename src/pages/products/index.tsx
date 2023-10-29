@@ -1,5 +1,7 @@
+import { Heading } from '@aws-amplify/ui-react';
+
 const Products = () => {
-	return <div> Hello world from Products</div>;
+	return <Heading level={1}>Hello world from Products!</Heading>;
 };
 
 export default Products;

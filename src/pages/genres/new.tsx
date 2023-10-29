@@ -1,5 +1,5 @@
-const NewGenre = () => {
-	return <div>NewGenre</div>;
+const NewGenres = () => {
+	return <div>NewGenres</div>;
 };
 
-export default NewGenre;
+export default NewGenres;

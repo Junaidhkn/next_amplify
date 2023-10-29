@@ -1,5 +1,7 @@
+import { Heading } from '@aws-amplify/ui-react';
+
 const Genres = () => {
-	return <div> Hello world from Genres</div>;
+	return <Heading level={1}>Hello world from Genres!</Heading>;
 };
 
 export default Genres;
