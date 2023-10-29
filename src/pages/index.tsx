@@ -7,7 +7,8 @@ const Home = () => {
 	return (
 		<Flex
 			alignContent={'center'}
-			justifyContent={'space-between'}>
+			justifyContent={'space-between'}
+			marginTop={'2rem'}>
 			<Heading level={1}>Hello, world!</Heading>
 			<Button
 				onClick={signOut}
