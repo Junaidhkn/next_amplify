@@ -19,6 +19,7 @@ export declare type ProductUpdateFormInputValues = {
     image?: string;
     platformID?: string;
     genreID?: string;
+    name?: string;
 };
 export declare type ProductUpdateFormValidationValues = {
     isSold?: ValidationFunction<boolean>;
@@ -26,6 +27,7 @@ export declare type ProductUpdateFormValidationValues = {
     image?: ValidationFunction<string>;
     platformID?: ValidationFunction<string>;
     genreID?: ValidationFunction<string>;
+    name?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ProductUpdateFormOverridesProps = {
@@ -35,6 +37,7 @@ export declare type ProductUpdateFormOverridesProps = {
     image?: PrimitiveOverrideProps<TextFieldProps>;
     platformID?: PrimitiveOverrideProps<AutocompleteProps>;
     genreID?: PrimitiveOverrideProps<AutocompleteProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ProductUpdateFormProps = React.PropsWithChildren<{
     overrides?: ProductUpdateFormOverridesProps | undefined | null;

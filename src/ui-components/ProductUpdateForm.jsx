@@ -204,6 +204,7 @@ export default function ProductUpdateForm(props) {
     image: "",
     platformID: undefined,
     genreID: undefined,
+    name: "",
   };
   const [isSold, setIsSold] = React.useState(initialValues.isSold);
   const [price, setPrice] = React.useState(initialValues.price);
@@ -219,6 +220,7 @@ export default function ProductUpdateForm(props) {
   const [selectedGenreIDRecords, setSelectedGenreIDRecords] = React.useState(
     []
   );
+  const [name, setName] = React.useState(initialValues.name);
   const autocompleteLength = 10;
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -234,6 +236,7 @@ export default function ProductUpdateForm(props) {
     setGenreID(cleanValues.genreID);
     setCurrentGenreIDValue(undefined);
     setCurrentGenreIDDisplayValue("");
+    setName(cleanValues.name);
     setErrors({});
   };
   const [productRecord, setProductRecord] = React.useState(productModelProp);
@@ -294,6 +297,7 @@ export default function ProductUpdateForm(props) {
     image: [],
     platformID: [{ type: "Required" }],
     genreID: [{ type: "Required" }],
+    name: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -384,6 +388,7 @@ export default function ProductUpdateForm(props) {
           image: image ?? null,
           platformID,
           genreID,
+          name: name ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -449,6 +454,7 @@ export default function ProductUpdateForm(props) {
               image,
               platformID,
               genreID,
+              name,
             };
             const result = onChange(modelFields);
             value = result?.isSold ?? value;
@@ -481,6 +487,7 @@ export default function ProductUpdateForm(props) {
               image,
               platformID,
               genreID,
+              name,
             };
             const result = onChange(modelFields);
             value = result?.price ?? value;
@@ -509,6 +516,7 @@ export default function ProductUpdateForm(props) {
               image: value,
               platformID,
               genreID,
+              name,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -534,6 +542,7 @@ export default function ProductUpdateForm(props) {
               image,
               platformID: value,
               genreID,
+              name,
             };
             const result = onChange(modelFields);
             value = result?.platformID ?? value;
@@ -630,6 +639,7 @@ export default function ProductUpdateForm(props) {
               image,
               platformID,
               genreID: value,
+              name,
             };
             const result = onChange(modelFields);
             value = result?.genreID ?? value;
@@ -713,6 +723,35 @@ export default function ProductUpdateForm(props) {
           {...getOverrideProps(overrides, "genreID")}
         ></Autocomplete>
       </ArrayField>
+      <TextField
+        label="Name"
+        isRequired={false}
+        isReadOnly={false}
+        value={name}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              isSold,
+              price,
+              image,
+              platformID,
+              genreID,
+              name: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.name ?? value;
+          }
+          if (errors.name?.hasError) {
+            runValidationTasks("name", value);
+          }
+          setName(value);
+        }}
+        onBlur={() => runValidationTasks("name", name)}
+        errorMessage={errors.name?.errorMessage}
+        hasError={errors.name?.hasError}
+        {...getOverrideProps(overrides, "name")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}
